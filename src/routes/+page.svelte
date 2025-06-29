@@ -8,8 +8,10 @@
 	$effect(() => {
 		const getExtData = async () => {
 			const res = await getData('/todos');
+					console.log(res)
 		};
 		getExtData();
+
 	});
 
 	function addCard(e: MouseEvent) {

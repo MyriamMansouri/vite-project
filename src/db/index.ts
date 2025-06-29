@@ -4,7 +4,6 @@ export async function getData(instruction: string) {
 	try {
 		const response = await fetch(url + instruction, {
 			headers: { 'Content-Type': 'application/json' },
-			mode: 'no-cors'
 		});
 
 		if (!response.ok) {
@@ -13,6 +12,6 @@ export async function getData(instruction: string) {
 
 		return await response.json();
 	} catch (error) {
-		console.error(error.message);
+		console.error(error);
 	}
 }
