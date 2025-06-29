@@ -1,17 +1,31 @@
-export async function getData(instruction: string) {
-	const url = 'http://localhost:9090';
+export async function fetchApi(endpoint: string) {
+	return await customFetch(endpoint, {
+		headers: { 'Content-Type': 'application/json' },
+	});
+}
 
-	try {
-		const response = await fetch(url + instruction, {
-			headers: { 'Content-Type': 'application/json' },
-		});
+const BASE_URL = 'http://localhost:9090';
 
-		if (!response.ok) {
-			throw new Error(`Response status: ${response.status}`);
-		}
+async function customFetch(
+  endpoint: string,
+  options: RequestInit = {}
+) {
+  try {
+    const response = await fetch(BASE_URL + endpoint, {
+      headers: {
+        'Content-Type': 'application/json',
+        ...(options.headers || {})
+      },
+      ...options
+    });
 
-		return await response.json();
-	} catch (error) {
-		console.error(error);
-	}
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP ${response.status} : ${response.statusText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Erreur lors de la requête :', error);
+    throw error;
+  }
 }

@@ -1,14 +1,13 @@
 <script lang="ts">
 	import '../app.css';
 	import Layout from '$lib/Layout.svelte';
-	import { getData } from '../db';
+	import { fetchApi } from '../db';
 	const { data } = $props();
 	let cards: { i: number; x: number; y: number }[] = $state([]);
 
 	$effect(() => {
 		const getExtData = async () => {
-			const res = await getData('/todos');
-					console.log(res)
+			const res = await fetchApi('/todos');
 		};
 		getExtData();
 
