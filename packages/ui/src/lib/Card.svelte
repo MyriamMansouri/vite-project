@@ -1,6 +1,6 @@
 <script lang="ts">
   import { randomOkLCHColor } from '../helpers/randomColor';
-  import Form from './Form.svelte';
+  import { Form } from '.';
 
   let { text, x, y } = $props();
   let card = $state(undefined);

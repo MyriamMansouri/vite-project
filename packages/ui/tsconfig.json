@@ -1,0 +1,10 @@
+{
+  "extends": ["./.svelte-kit/tsconfig.json"],
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "allowArbitraryExtensions": true
+  },
+  "include": ["dist", "./src/**/*.svelte", "./src/**/*.ts"],
+  "exclude": ["node_modules", ".svelte-kit", "**/node_modules/**/*.d.ts"]
+}
