@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node24/tsconfig.json",
+  "compilerOptions": {
+    "importsNotUsedAsValues": "remove",
+    "outDir": "dist",
+    "moduleResolution": "bundler",
+    "module": "es2020"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
