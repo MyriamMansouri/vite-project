@@ -3,8 +3,9 @@
   "compilerOptions": {
     "importsNotUsedAsValues": "remove",
     "outDir": "dist",
-    "moduleResolution": "bundler",
-    "module": "es2020"
+    "moduleResolution": "node",
+    "module": "es2022",
+    "target": "es2022"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
