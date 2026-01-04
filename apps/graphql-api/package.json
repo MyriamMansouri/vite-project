@@ -4,7 +4,6 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development ts-node-dev --exit-child --respawn src/main.ts",
     "start": "tsx ./src/server.ts",
     "codegen": "graphql-codegen --config server-codegen.ts",
     "build": "tsc"
