@@ -9,7 +9,6 @@ export const fetchGraphQLApi = async () => {
 		})
 	});
 	const body = await response.json();
-	console.log('Response body ici from GraphQL API ici:', body);
 	return body;
 };
 

@@ -2,8 +2,7 @@
 	import '../app.css';
 	import { Layout } from '@repo/ui';
 	import { fetchGraphQLApi } from '../db';
-	const { data } = $props();
-	let cards: { i: number; x: number; y: number }[] = $state([]);
+	let cards: { i: number; x: number; y: number; text?: string }[] = $state([]);
 	let posts: { id: number; title: string }[] = $state([]);
 
 	$effect(() => {
@@ -13,6 +12,18 @@
 				// Accéder aux posts depuis la réponse GraphQL
 				if (res?.data?.posts) {
 					posts = res.data.posts;
+					// Ajouter une card pour chaque post qui existe
+					if (posts.length > 0) {
+						posts.forEach((post) => {
+							const newCard = {
+								i: cards.length + 1,
+								x: Math.random() * window.innerWidth,
+								y: Math.random() * window.innerHeight,
+								text: post.title
+							};
+							cards = [...cards, newCard];
+						});
+					}
 				}
 			} catch (error) {
 				console.error('Error fetching data:', error);
@@ -30,17 +41,4 @@
 
 <main>
 	<Layout {cards} />
-
-	<section class="posts">
-		<h2>Posts from GraphQL API</h2>
-		{#each posts as post}
-			<article>
-				<h3>{post.title}</h3>
-				<p>ID: {post.id}</p>
-			</article>
-		{/each}
-		{#if posts.length === 0}
-			<p>Aucun post trouvé</p>
-		{/if}
-	</section>
 </main>

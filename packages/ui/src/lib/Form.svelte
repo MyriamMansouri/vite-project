@@ -1,7 +1,8 @@
 <script lang="ts">
+	let { text } = $props();
 </script>
 
 <form class="h-full text-3xl">
-  <textarea class="bg-transparent w-full h-full p-6 focus-visible:outline-none"
-  ></textarea>
+	<textarea class="h-full w-full bg-transparent p-6 focus-visible:outline-none" value={text}
+	></textarea>
 </form>
